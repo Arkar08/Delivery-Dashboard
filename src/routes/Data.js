@@ -27,10 +27,6 @@ export const data = [
                         path:"login",
                         Component:Login
                     },
-                    {
-                        path:"logout",
-                        Component:Logout
-                    }
                 ]
             },
    {
@@ -46,6 +42,10 @@ export const data = [
                         Component:Dashboard
                     }
                 ]
+            },
+             {
+                path:"logout",
+                Component:Logout
             },
             {
                 path:"users",

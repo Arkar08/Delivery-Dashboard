@@ -9,6 +9,10 @@
     position: relative;
     height: 100vh;
 }
+.logout{
+    position: relative;
+    height: calc(100vh - 120px);
+}
 form{
     position: absolute;
     top: 10%;

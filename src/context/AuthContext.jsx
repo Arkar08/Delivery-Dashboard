@@ -23,8 +23,20 @@ const AuthProvider = ({children})=>{
         }
     }
 
+    const logoutAuth = async() =>{
+        try {
+            await Axios.post("user/logout").then((res)=>{
+                if(res.status === 200 || res.success === true){
+                    localStorage.removeItem("token")
+                }
+            })
+        } catch (error) {
+             console.error(error)
+        }
+    }
 
-    const postData = {loginAuth}
+
+    const postData = {loginAuth,logoutAuth}
 
     return (
         <AuthContext.Provider value={postData}>

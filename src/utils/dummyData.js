@@ -20,7 +20,7 @@ export const dummyData = [
         text:"Booking"
     },
     {
-        route:"/auth/logout",
+        route:"/logout",
         text:"Logout"
     }
 ]
