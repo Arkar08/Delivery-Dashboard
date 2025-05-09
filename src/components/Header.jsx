@@ -10,7 +10,7 @@ const Header = ({name,route}) => {
           {
             name !== 'Bookings' && (
               <Link to={`/${route}/create`}>
-                    <img src="/add.png" alt="" width={35} className="object-center object-cover cursor-pointer"/>
+                    <img src="/add.svg" alt="" width={30} className="object-center object-cover cursor-pointer"/>
               </Link>
             )
           }
