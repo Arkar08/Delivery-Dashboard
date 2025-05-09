@@ -6,14 +6,14 @@ import Sidebar from './Sidebar'
 const Main = () => {
   return (
     <div className='h-[100vh]'>
-      <div className='h-[10%] bg-[#141313] text-white flex flex-col justify-center border-b-white border-b-[0.3px]'>
+      <div className='h-[10%]   flex flex-col justify-center border-b-black border-b-[0.3px]'>
         <Navbar />
       </div>
-      <div className='flex h-[89.9%] w-[100vw] bg-[#141313ed]'>
-        <div className='w-[16%] shadow-white shadow-lg'>
+      <div className='flex h-[89.9%] w-[100vw]'>
+        <div className='w-[16%] shadow-black shadow-sm rounded-md'>
           <Sidebar />
         </div>
-        <div className='w-[84%] p-3 text-white'>
+        <div className='w-[84%] p-3 '>
           <Outlet />
         </div>
       </div>
