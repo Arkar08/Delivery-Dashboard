@@ -4,3 +4,23 @@
 .material-symbols-outlined{
     font-size:30px !important;
 }
+
+.login{
+    position: relative;
+    height: 100vh;
+}
+form{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,10%);
+    max-width: 400px;
+    width: 100%;
+    padding:20px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px gray;
+}
+
+.tableCell{
+    font-weight: bold !important;
+}
