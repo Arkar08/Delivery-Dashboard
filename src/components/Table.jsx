@@ -6,12 +6,13 @@ import Paper from '@mui/material/Paper';
 const paginationModel = { page: 0, pageSize: 5 };
 
 
-const DataTable = ({columns,rows}) => {
+const DataTable = ({columns,rows,loading}) => {
   return (
    <div className='relative h-[77vh]'>
     <div className='w-[95%] h-[70vh] overflow-auto mx-auto  p-5 rounded-md'>
        <Paper sx={{ height: '100%', width: '100%' }}>
           <DataGrid
+            loading={loading}
             rows={rows}
             columns={columns}
             initialState={{ pagination: { paginationModel } }}

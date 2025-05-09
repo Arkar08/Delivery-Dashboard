@@ -8,22 +8,27 @@ const BookingContext = createContext()
 const BookingProvider = ({children}) =>{
 
     const [bookings,setBookings] = useState([])
+    const [loading,setLoading] = useState(false)
     
         const getBookings = async()=>{
+            setLoading(true)
             try {
                 await Axios.get("/order").then((res)=>{
                     if(res.data.status === 200 || res.data.success === true){
                         setBookings(res.data.data);
+                        setLoading(false)
                     }
                 }).catch((error)=>{
                     console.log(error)
+                    setLoading(false)
                 })
             } catch (error) {
                 console.error(error)
+                setLoading(false)
             }
         }
 
-    const postData = {getBookings,bookings}
+    const postData = {getBookings,bookings,loading}
 
     return (
         <BookingContext.Provider value={postData}>

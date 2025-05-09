@@ -7,7 +7,7 @@ import { useBooking } from '../../context/BookingContext'
 
 const Booking = () => {
 
-  const {bookings,getBookings} = useBooking();
+  const {bookings,getBookings,loading} = useBooking();
 
 
   useEffect(()=>{
@@ -61,7 +61,7 @@ const Booking = () => {
   return (
     <div>
       <Header name='Bookings'/>
-      <DataTable rows={bookings} columns={columns} text='bookings'/>
+      <DataTable rows={bookings} columns={columns} loading={loading}/>
     </div>
   )
 }

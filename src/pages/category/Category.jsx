@@ -7,7 +7,7 @@ import { GridFilterListIcon } from '@mui/x-data-grid'
 
 const Category = () => {
 
-  const {getCategory,category} = useCategory();
+  const {getCategory,category,loading} = useCategory();
 
 
 
@@ -35,7 +35,7 @@ const Category = () => {
   return (
     <div>
       <Header name='Category Lists' route='category'/>
-      <DataTable rows={category} columns={columns}/>
+      <DataTable rows={category} columns={columns} loading={loading}/>
     </div>
   )
 }

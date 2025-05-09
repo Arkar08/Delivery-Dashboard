@@ -6,7 +6,7 @@ import { useProduct } from '../../context/ProductContext'
 
 const Products = () => {
 
-  const {getProduct,products} = useProduct()
+  const {getProduct,products,loading} = useProduct()
 
 
   useEffect(()=>{
@@ -52,7 +52,7 @@ const Products = () => {
   return (
     <div>
       <Header name='Product Lists' route='products'/>
-      <DataTable columns={columns} rows={products}/>
+      <DataTable columns={columns} rows={products} loading={loading}/>
     </div>
   )
 }

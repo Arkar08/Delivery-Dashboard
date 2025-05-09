@@ -7,7 +7,7 @@ import { useUser } from '../../context/UserContext'
 const Users = () => {
 
 
-  const {users,getUser} = useUser()
+  const {users,getUser,loading} = useUser()
 
   useEffect(()=>{
     getUser()
@@ -52,7 +52,7 @@ const Users = () => {
   return (
     <div>
        <Header name='User Master' route='users'/>
-       <DataTable rows={users} columns={columns} />
+       <DataTable rows={users} columns={columns} loading={loading}/>
     </div>
   )
 }
