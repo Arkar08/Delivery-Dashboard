@@ -27,7 +27,6 @@ const EditCategory = () => {
               try {
                   await Axios.get(`/category/${state.id}`).then((res)=>{
                       if(res.data.status === 200 || res.data.success === true){
-                        console.log(res.data.data[0])
                           setEditCategory(res.data.data[0])
                       }
                   }).catch((error)=>{
