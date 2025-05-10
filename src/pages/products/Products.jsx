@@ -20,8 +20,8 @@ const Products = () => {
       headerName:"Image",
       renderCell: (params)=>{
        return(
-            <div className='h-[100px]'>
-              <img src={params.row.image} alt='image' />
+            <div className='flex items-center justify-center'>
+              <img src={`https://delivery-app-backend-lbba.onrender.com/uploads/${params.row.image}`} alt='image'/>
             </div>
        )
     }

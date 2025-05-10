@@ -14,6 +14,7 @@ const DataTable = ({columns,rows,loading}) => {
           <DataGrid
             loading={loading}
             rows={rows}
+            rowHeight={68}
             columns={columns}
             initialState={{ pagination: { paginationModel } }}
             pageSizeOptions={[5, 10,25,50,100]}

@@ -31,3 +31,6 @@ form{
 .css-74d805-MuiButtonBase-root-MuiButton-root{
     line-height: 2.45 !important;
 }
+img, video {
+    max-width: 80% !important;
+}

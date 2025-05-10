@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProduct } from '../../context/ProductContext';
 import { useCategory } from '../../context/CategoryContext';
+import Axios from '../../apiConfig';
 
 
 const VisuallyHiddenInput = styled('input')({
@@ -41,17 +42,24 @@ const CreateProduct = () => {
     getCategory()
   },[])
 
-  const upload = (event) =>{
+  const upload = async(event) =>{
+
       const files = event.target.files;
+      const fileData = new FormData()
+
+      fileData.append("file",files[0])
+      await Axios.post("/upload",fileData).then((res)=>{
+        setProductList((prev)=>(
+          {
+            ...prev,image:res.data
+          }
+        ))
+      })
+
 
       if(files){
         const url = URL.createObjectURL(files[0])
         setImage(url)
-        setProductList((prev)=>(
-          {
-            ...prev,image:url
-          }
-        ))
       }
   }
 
@@ -66,7 +74,7 @@ const CreateProduct = () => {
 
   const cancelBtn = () =>{
     setProductList({
-        title:"",
+      title:"",
       category:"",
       price:"",
       description:"",
@@ -78,7 +86,7 @@ const CreateProduct = () => {
   const createBtn = async() =>{
     await createProduct(productList)
     setProductList({
-        title:"",
+      title:"",
       category:"",
       price:"",
       description:"",
@@ -129,6 +137,7 @@ const CreateProduct = () => {
                     <VisuallyHiddenInput
                       type="file"
                       onChange={upload}
+                      name='image'
                       accept='.png,.jpeg,.jpg,.svg'
                     />
                   </Button>
@@ -136,7 +145,7 @@ const CreateProduct = () => {
             <div className='shadow-lg rounded-md w-[60%] h-[250px] mt-8 mx-auto'>
               {
                 image !== '' && (
-                  <img src={image} alt="upload_Image" className='w-[100%] h-[100%] object-center object-cover'/>
+                  <img src={image} alt="upload_Image" className='w-[100%] h-[100%]'/>
                 )
               }
             </div>
