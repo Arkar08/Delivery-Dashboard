@@ -19,6 +19,7 @@ const DataTable = ({columns,rows,loading}) => {
             initialState={{ pagination: { paginationModel } }}
             pageSizeOptions={[5, 10,25,50,100]}
             sx={{ border: 0 ,p:'8px',width:'100%'}}
+            rowSelection={false}
           />
        </Paper>
     </div>

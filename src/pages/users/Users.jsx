@@ -12,6 +12,15 @@ const Users = () => {
   useEffect(()=>{
     getUser()
   },[])
+
+    const handleEdit = () =>{
+      console.log('edit')
+    }
+
+    const handleDelete = () =>{
+      console.log('delete')
+    }
+
   
 
 
@@ -42,9 +51,15 @@ const Users = () => {
         width:150
       },
       {
-        field:"actions",
         headerName:"Actions",
-        width:180
+        width:220,
+        sortable: false,
+        renderCell: (params) => (
+          <div className='flex gap-5'>
+            <button className='text-blue-500 hover:underline cursor-pointer' onClick={handleEdit}>Edit</button>
+            <button className='text-red-500 hover:underline cursor-pointer' onClick={handleDelete}>Delete</button>
+          </div>
+        ),
       }
   ]
 

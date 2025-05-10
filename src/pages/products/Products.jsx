@@ -8,10 +8,17 @@ const Products = () => {
 
   const {getProduct,products,loading} = useProduct()
 
-
   useEffect(()=>{
     getProduct()
   },[])
+
+  const handleEdit = () =>{
+    console.log('edit')
+  }
+
+  const handleDelete = () =>{
+    console.log('delete')
+  }
 
 
   const columns = [
@@ -47,10 +54,15 @@ const Products = () => {
       width:220
     },
     {
-      field:"actions",
       headerName:"Actions",
       width:220,
-      sortable: false
+      sortable: false,
+       renderCell: (params) => (
+        <div className='flex gap-5'>
+          <button className='text-blue-500 hover:underline cursor-pointer' onClick={handleEdit}>Edit</button>
+          <button className='text-red-500 hover:underline cursor-pointer' onClick={handleDelete}>Delete</button>
+        </div>
+      ),
     }
   ]
 

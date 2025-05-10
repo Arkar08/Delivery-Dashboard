@@ -8,6 +8,7 @@ import BookingLayout from "../pages/booking/BookingLayout"
 import Category from "../pages/category/Category"
 import CategoryLayout from "../pages/category/CategoryLayout"
 import CreateCategory from "../pages/category/CreateCategory"
+import EditCategory from "../pages/category/EditCategory"
 import Dashboard from "../pages/dashboard/Dashboard"
 import DashboardLayout from "../pages/dashboard/DashboardLayout"
 import NotFound from "../pages/error/NotFound"
@@ -72,6 +73,10 @@ export const data = [
                     {
                         path:"create",
                         Component:CreateCategory
+                    },
+                    {
+                        path:"update",
+                        Component:EditCategory
                     }
                 ]
             },

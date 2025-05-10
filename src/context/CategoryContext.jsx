@@ -47,8 +47,27 @@ const CategoryProvider = ({children})=>{
         }
     }
 
+    const updateCategory = async(data) => {
+        setLoading(true)
+        try {
+            await Axios.patch(`/category/${data._id}`,data.data).then((res)=>{
+                if(res.data.status === 200 || res.data.success === true){
+                    alert("update Category successfully.")
+                    setLoading(false)
+                }
+            }).catch((error)=>{
+                alert(error.response.data.message)
+                setLoading(false)
+            })
+        } catch (error) {
+            alert(error.response.data.message)
+            setLoading(false)
+        }
+    }
 
-    const postData = {getCategory,category,loading,createCategory}
+    
+
+    const postData = {getCategory,category,loading,createCategory,updateCategory}
 
     return (
         <CategoryContext.Provider value={postData}>
