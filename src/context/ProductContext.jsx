@@ -21,16 +21,34 @@ const ProductProvider = ({children}) =>{
                         setLoading(false)
                     }
                 }).catch((error)=>{
-                    console.log(error)
+                    alert(error.response.data.message)
                     setLoading(false)
                 })
             } catch (error) {
-                console.error(error)
+                alert(error.response.data.message)
                 setLoading(false)
             }
         }
 
-    const postData = {getProduct,products,loading}
+        const createProduct = async(data) =>{
+            setLoading(true)
+            try {
+                await Axios.post("/products",data).then((res)=>{
+                    console.log(res)
+                    setLoading(false)
+                }).catch((error)=>{
+                    console.log(error)
+                    alert(error.response.data.message)
+                    setLoading(false)
+                })
+            } catch (error) {
+                console.log(error)
+                alert(error.response.data.message)
+                setLoading(false)
+            }
+        }
+
+    const postData = {getProduct,products,loading,createProduct}
 
     return(
         <ProductContext.Provider value={postData}>

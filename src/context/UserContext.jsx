@@ -19,16 +19,35 @@ const UserProvider = ({children})=>{
                         setLoading(false)
                     }
                 }).catch((error)=>{
-                    console.log(error)
+                    alert(error.response.data.message)
                     setLoading(false)
                 })
             } catch (error) {
-                console.error(error)
+                alert(error.response.data.message)
                 setLoading(false)
             }
         }
 
-    const postData = {getUser,users,loading}
+        const createUser = async(data) =>{
+            setLoading(true)
+            try {
+                await Axios.post("/user",data).then((res)=>{
+                    if(res.data.status === 201 || res.data.success === true){
+                        setLoading(false)
+                        alert("User Create Successfully.")
+                    }
+                    
+                }).catch((error)=>{
+                    alert(error.response.data.message)
+                    setLoading(false)
+                })
+            } catch (error) {
+                alert(error.response.data.message)
+                setLoading(false)
+            }
+        }
+
+    const postData = {getUser,users,loading,createUser}
 
     return (
         <UserContext.Provider value={postData}>

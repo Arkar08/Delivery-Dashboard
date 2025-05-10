@@ -20,17 +20,35 @@ const CategoryProvider = ({children})=>{
                     setLoading(false)
                 }
             }).catch((error)=>{
-                console.log(error)
+                alert(error.response.data.message)
                 setLoading(false)
             })
         } catch (error) {
-            console.error(error)
+            alert(error.response.data.message)
+            setLoading(false)
+        }
+    }
+
+    const createCategory = async(data) =>{
+        setLoading(true)
+        try {
+            await Axios.post("/category",data).then((res)=>{
+                if(res.data.status === 201 || res.data.success === true){
+                    setLoading(false)
+                    alert("Create Category Successfully.")
+                }
+            }).catch((error)=>{
+                alert(error.response.data.message)
+                setLoading(false)
+            })
+        } catch (error) {
+            alert(error.response.data.message)
             setLoading(false)
         }
     }
 
 
-    const postData = {getCategory,category,loading}
+    const postData = {getCategory,category,loading,createCategory}
 
     return (
         <CategoryContext.Provider value={postData}>

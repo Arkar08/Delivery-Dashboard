@@ -18,6 +18,13 @@ const Products = () => {
     {
       field:"image",
       headerName:"Image",
+      renderCell: (params)=>{
+       return(
+            <div className='h-[100px]'>
+              <img src={params.row.image} alt='image' />
+            </div>
+       )
+    }
     },
     {
       field:"title",
