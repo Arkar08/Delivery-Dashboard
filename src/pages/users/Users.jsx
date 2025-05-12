@@ -3,18 +3,22 @@ import React, { useEffect } from 'react'
 import Header from '../../components/Header'
 import DataTable from '../../components/Table'
 import { useUser } from '../../context/UserContext'
+import { useNavigate } from 'react-router-dom'
 
 const Users = () => {
 
 
   const {users,getUser,loading} = useUser()
+  const navigate = useNavigate();
 
   useEffect(()=>{
     getUser()
   },[])
 
-    const handleEdit = () =>{
-      console.log('edit')
+    const handleEdit = (event) =>{
+        navigate("/user/update",{
+          state:event
+        })
     }
 
     const handleDelete = () =>{
@@ -56,7 +60,7 @@ const Users = () => {
         sortable: false,
         renderCell: (params) => (
           <div className='flex gap-5'>
-            <button className='text-blue-500 hover:underline cursor-pointer' onClick={handleEdit}>Edit</button>
+            <button className='text-blue-500 hover:underline cursor-pointer' onClick={()=>handleEdit(params.id)}>Edit</button>
             <button className='text-red-500 hover:underline cursor-pointer' onClick={handleDelete}>Delete</button>
           </div>
         ),

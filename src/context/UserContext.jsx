@@ -19,10 +19,12 @@ const UserProvider = ({children})=>{
                         setLoading(false)
                     }
                 }).catch((error)=>{
+                    console.log(error)
                     alert(error.response.data.message)
                     setLoading(false)
                 })
             } catch (error) {
+                console.log(error)
                 alert(error.response.data.message)
                 setLoading(false)
             }

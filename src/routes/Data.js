@@ -16,6 +16,7 @@ import CreateProduct from "../pages/products/CreateProduct"
 import ProductLayout from "../pages/products/ProductLayout"
 import Products from "../pages/products/Products"
 import CreateUser from "../pages/users/CreateUser"
+import UpdateUser from "../pages/users/UpdateUser"
 import UserLayout from "../pages/users/UserLayout"
 import Users from "../pages/users/Users"
 
@@ -59,6 +60,10 @@ export const data = [
                     {
                         path:'create',
                         Component:CreateUser
+                    },
+                    {
+                        path:"update",
+                        Component:UpdateUser
                     }
                 ]
             },

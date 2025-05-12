@@ -2,59 +2,64 @@ import React, { useState } from 'react'
 import Input from '../../components/Input'
 import { Button } from '@mui/material'
 import Select from '../../components/Select'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useUser } from '../../context/UserContext'
 
-const CreateUser = () => {
+const UpdateUser = () =>{
 
-  const [user,setUser] = useState({
-    name:"",
-    email:"",
-    password:"",
-    phone:"",
-    address:"",
-    role:""
-  })
 
-  const navigate = useNavigate();
-  const {createUser} = useUser();
+    const [state]  = useLocation()
 
-  const cancelBtn = () =>{
-    setUser({
-      name:"",
-      email:"",
-      password:"",
-      phone:"",
-      address:"",
-      role:""
-    })
-    navigate("/users")
-  }
+    console.log(state)
 
-  const userChange = (event) =>{
-    setUser((prev)=>(
-      {
-        ...prev,[event.target.name]:event.target.value
+      const [user,setUser] = useState({
+        name:"",
+        email:"",
+        password:"",
+        phone:"",
+        address:"",
+        role:""
+      })
+    
+      const navigate = useNavigate();
+      const {createUser} = useUser();
+    
+      const cancelBtn = () =>{
+        setUser({
+          name:"",
+          email:"",
+          password:"",
+          phone:"",
+          address:"",
+          role:""
+        })
+        navigate("/users")
       }
-    ))
-  }
+    
+      const userChange = (event) =>{
+        setUser((prev)=>(
+          {
+            ...prev,[event.target.name]:event.target.value
+          }
+        ))
+      }
+    
+      const createBtn = async() =>{
+        await createUser(user)
+         setUser({
+          name:"",
+          email:"",
+          password:"",
+          phone:"",
+          address:"",
+          role:""
+        })
+        navigate("/users")
+      }
 
-  const createBtn = async() =>{
-    await createUser(user)
-     setUser({
-      name:"",
-      email:"",
-      password:"",
-      phone:"",
-      address:"",
-      role:""
-    })
-    navigate("/users")
-  }
-
-  return (
-    <div>
-        <h3 className='text-2xl  p-4'>Create User</h3>
+    return (
+        <div>
+        <h3 className='text-2xl  p-4'>Update User</h3>
        <div className='shadow-lg relative h-[72vh] mt-5 w-[90%] mx-auto rounded-md p-3'>
           <div className='grid grid-cols-3 gap-4'>
             <div className='flex flex-col mt-5'>
@@ -89,11 +94,11 @@ const CreateUser = () => {
           </div>
           <div className='absolute bottom-4 right-[42%] flex gap-5'>
             <Button variant='outlined' color='error' onClick={cancelBtn}>Cancel</Button>
-            <Button variant='contained' color='primary' onClick={createBtn}>Create</Button>
+            <Button variant='contained' color='primary' onClick={createBtn}>Update</Button>
           </div>
        </div>
     </div>
-  )
+    )
 }
 
-export default CreateUser
+export default UpdateUser;

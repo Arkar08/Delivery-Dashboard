@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Input from '../../components/Input'
-import { useAuth } from '../../context/authContext'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext';
 
 const Login = () => {
 
@@ -20,7 +20,7 @@ const Login = () => {
     ))
   }
 
-  const {loginAuth} = useAuth()
+  const {loginAuth,loading} = useAuth()
 
   const loginSubmit = async(event)=>{
     event.preventDefault();
@@ -29,6 +29,11 @@ const Login = () => {
     if(token){
       navigate("/dashboard")
     }
+  }
+
+
+  {
+    loading && (<div>Loading</div>)
   }
 
   return (
